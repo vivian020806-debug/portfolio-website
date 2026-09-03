@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="诗云 - 品牌视觉设计师 × AI创意设计师">
+  
+  <title>诗云 | 品牌视觉设计师 × AI创意设计师</title>
+  
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="/src/styles/variables.css">
+  <link rel="stylesheet" href="/src/styles/global.css">
+  <link rel="stylesheet" href="/src/styles/layouts.css">
+  
+  <style>
+    /* ==================== MODERN DARK THEME STYLES ==================== */
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif;
+      background-color: #0a0a0a;
+      color: #ffffff;
+      line-height: 1.6;
+    }
+    
+    /* ==================== HEADER & NAVIGATION ==================== */
+    
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 1000;
+      padding: 0 var(--spacing-6);
+      height: 70px;
+    }
+    
+    .header-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+    }
+    
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: #ffffff;
+      text-decoration: none;
+      letter-spacing: -1px;
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: var(--spacing-8);
+    }
+    
+    nav a {
+      color: #9ca3af;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+    
+    nav a:hover,
+    nav a.active {
+      color: #ffffff;
+    }
+    
+    nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #60a5fa;
+    }
+    
+    /* ==================== MAIN CONTENT ==================== */
+    
+    main {
+      margin-top: 70px;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--spacing-6);
+    }
+    
+    /* ==================== HERO SECTION ==================== */
+    
+    .hero {
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: var(--spacing-12) var(--spacing-6);
+    }
+    
+    .hero-content {
+      max-width: 900px;
+    }
+    
+    .hero-name {
+      font-size: 72px;
+      font-weight: 700;
+      margin-bottom: var(--spacing-6);
+      letter-spacing: -2px;
+      line-height: 1.1;
+    }
+    
+    .hero-subtitle {
+      font-size: 24px;
+      color: #d1d5db;
+      margin-bottom: var(--spacing-8);
+      font-weight: 300;
+      letter-spacing: 0.5px;
+    }
+    
+    .hero-cta {
+      display: inline-flex;
+      gap: var(--spacing-4);
+    }
+    
+    .btn {
+      padding: var(--spacing-3) var(--spacing-6);
+      border-radius: 6px;
+      border: none;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+    
+    .btn-primary {
+      background-color: #60a5fa;
+      color: #ffffff;
+    }
+    
+    .btn-primary:hover {
+      background-color: #93c5fd;
+      transform: translateY(-2px);
+    }
+    
+    .btn-secondary {
+      background-color: transparent;
+      color: #ffffff;
+      border: 1px solid #374151;
+    }
+    
+    .btn-secondary:hover {
+      border-color: #60a5fa;
+      color: #60a5fa;
+    }
+    
+    /* ==================== PROJECTS SECTION ==================== */
+    
+    .projects-section {
+      padding: var(--spacing-16) var(--spacing-6);
+      background-color: #0a0a0a;
+    }
+    
+    .section-title {
+      font-size: 48px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: var(--spacing-12);
+      letter-spacing: -1px;
+    }
+    
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: var(--spacing-8);
+      margin-top: var(--spacing-8);
+    }
+    
+    .project-card {
+      background-color: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 12px;
+      padding: var(--spacing-8);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      overflow: hidden;
+    }
+    
+    .project-card:hover {
+      border-color: #60a5fa;
+      transform: translateY(-8px);
+      background-color: #1a1f35;
+      box-shadow: 0 20px 40px rgba(96, 165, 250, 0.1);
+    }
+    
+    .project-card-image {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+      border-radius: 8px;
+      margin-bottom: var(--spacing-6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6b7280;
+      font-size: 14px;
+    }
+    
+    .project-card-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: var(--spacing-3);
+      color: #ffffff;
+    }
+    
+    .project-card-description {
+      font-size: 14px;
+      color: #9ca3af;
+      line-height: 1.6;
+    }
+    
+    .project-card-meta {
+      margin-top: var(--spacing-4);
+      font-size: 12px;
+      color: #6b7280;
+    }
+    
+    /* ==================== FOOTER ==================== */
+    
+    footer {
+      background-color: #000000;
+      border-top: 1px solid #1f2937;
+      padding: var(--spacing-8) var(--spacing-6);
+      text-align: center;
+      color: #6b7280;
+      font-size: 14px;
+    }
+    
+    footer a {
+      color: #60a5fa;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    footer a:hover {
+      color: #93c5fd;
+    }
+    
+    /* ==================== RESPONSIVE ==================== */
+    
+    @media (max-width: 768px) {
+      header {
+        padding: 0 var(--spacing-4);
+      }
+      
+      nav ul {
+        gap: var(--spacing-4);
+      }
+      
+      nav a {
+        font-size: 12px;
+      }
+      
+      .hero-name {
+        font-size: 48px;
+      }
+      
+      .hero-subtitle {
+        font-size: 18px;
+      }
+      
+      .section-title {
+        font-size: 32px;
+      }
+      
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%23fff'>◆</text></svg>">
+</head>
+<body>
+  
+  <!-- ==================== HEADER ==================== -->
+  <header>
+    <div class="header-wrapper">
+      <a href="/" class="logo">诗云</a>
+      
+      <nav>
+        <ul>
+          <li><a href="#" class="nav-link active">首页</a></li>
+          <li><a href="#projects" class="nav-link">项目</a></li>
+          <li><a href="#about" class="nav-link">关于我</a></li>
+          <li><a href="#contact" class="nav-link">联系方式</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main>
+    
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1 class="hero-name">诗云</h1>
+        <p class="hero-subtitle">品牌视觉设计师 × AI创意设计师</p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn-primary">查看项目</a>
+          <a href="#contact" class="btn btn-secondary">联系我</a>
+        </div>
+      </div>
+    </section>
+    
+    <!-- PROJECTS SECTION -->
+    <section class="projects-section" id="projects">
+      <div class="container">
+        <h2 class="section-title">项目案例</h2>
+        
+        <div class="projects-grid">
+          <!-- Project Card 1 -->
+          <div class="project-card">
+            <div class="project-card-image">[项目图片]</div>
+            <h3 class="project-card-title">项目案例 1</h3>
+            <p class="project-card-description">
+              这是一个精心设计的品牌视觉项目，融合现代设计理念和商业思维，为客户打造独特的品牌形象。
+            </p>
+            <div class="project-card-meta">品牌设计 · 2024</div>
+          </div>
+          
+          <!-- Project Card 2 -->
+          <div class="project-card">
+            <div class="project-card-image">[项目图片]</div>
+            <h3 class="project-card-title">项目案例 2</h3>
+            <p class="project-card-description">
+              通过视觉设计和创意思维，帮助品牌在竞争激烈的市场中脱颖而出，建立强有力的视觉识别。
+            </p>
+            <div class="project-card-meta">视觉设计 · 2024</div>
+          </div>
+          
+          <!-- Project Card 3 -->
+          <div class="project-card">
+            <div class="project-card-image">[项目图片]</div>
+            <h3 class="project-card-title">AI创意工作流</h3>
+            <p class="project-card-description">
+              探索AI在设计中的应用，将人工智能技术融入创意过程，打造高效、创新的设计方案。
+            </p>
+            <div class="project-card-meta">AI创意 · 2024</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+  </main>
+  
+  <!-- ==================== FOOTER ==================== -->
+  <footer>
+    <p>© 2026 诗云</p>
+  </footer>
+  
+  <script>
+    // Navigation active state
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    navLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        navLinks.forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+    
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+  
+</body>
+</html>
+        </p>
+        
+        <div class="hero-cta">
+          <a href="/pages/projects.html" class="btn btn-primary">View My Work</a>
+          <a href="/pages/contact.html" class="btn btn-secondary">Get in Touch</a>
+        </div>
+      </div>
+    </section>
+    
+    <!-- FEATURED PROJECTS SECTION -->
+    <section class="section">
+      <div class="container">
+        <div class="section-intro">
+          <h2 class="section-title">Featured Projects</h2>
+          <p class="section-subtitle">Selected case studies showcasing brand design and visual creative work</p>
+        </div>
+        
+        <div class="grid-3" id="featured-projects">
+          <!-- 项目卡片将通过 JavaScript 动态生成 -->
+          <!-- PROJECT CARDS WILL BE GENERATED HERE -->
+          
+          <!-- PLACEHOLDER: 项目卡片示例 -->
+          <div class="project-card">
+            <div class="project-card-image">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 250'%3E%3Crect fill='%23f0f0f0' width='400' height='250'/%3E%3Ctext x='50%25' y='50%25' font-size='16' fill='%23999' text-anchor='middle' dominant-baseline='middle'%3E[PROJECT IMAGE]%3C/text%3E%3C/svg%3E" alt="Project thumbnail">
+            </div>
+            <div class="project-card-content">
+              <h3 class="project-card-title">[PROJECT TITLE]</h3>
+              <p class="project-card-description">[PROJECT DESCRIPTION - Brief overview of the project]</p>
+              <div class="project-card-meta">
+                <span class="project-card-tag">Brand Design</span>
+                <span class="project-card-tag">2024</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Add more project cards here -->
+          
+        </div>
+        
+        <div style="text-align: center; margin-top: var(--spacing-10);">
+          <a href="/pages/projects.html" class="btn btn-primary">View All Projects</a>
+        </div>
+      </div>
+    </section>
+    
+    <!-- ABOUT PREVIEW SECTION -->
+    <section class="section" style="background-color: var(--color-bg-subtle);">
+      <div class="container">
+        <div class="grid-2">
+          <div>
+            <h2 style="margin-bottom: var(--spacing-4);">About Me</h2>
+            <p style="color: var(--color-text-medium); line-height: var(--line-height-loose); margin-bottom: var(--spacing-3);">
+              [ABOUT INTRODUCTION - 2-3 SENTENCES describing who you are and what you do]
+            </p>
+            <p style="color: var(--color-text-medium); line-height: var(--line-height-loose); margin-bottom: var(--spacing-6);">
+              With a background in graphic design, hand drawing, and oil painting, combined with hands-on experience in brand operations, e-commerce, and content creation, I bring a comprehensive understanding of design, branding, and business.
+            </p>
+            <a href="/pages/about.html" class="btn btn-primary">Learn More</a>
+          </div>
+          
+          <div style="display: flex; align-items: center; justify-content: center;">
+            <div style="width: 100%; aspect-ratio: 1/1; background-color: var(--color-border); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: var(--color-text-light);">
+              [PERSONAL PHOTO / VISUAL]
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- AI LAB PREVIEW SECTION -->
+    <section class="section">
+      <div class="container">
+        <div class="section-intro">
+          <h2 class="section-title">AI Lab</h2>
+          <p class="section-subtitle">Exploring how AI integrates into authentic design workflows</p>
+        </div>
+        
+        <div style="max-width: 800px; margin: var(--spacing-10) auto var(--spacing-8); text-align: center;">
+          <h3 style="margin-bottom: var(--spacing-4); font-size: var(--font-size-h5);">My AI Design Workflow</h3>
+          <div style="display: flex; align-items: center; justify-content: space-around; font-size: var(--font-size-body-sm); color: var(--color-text-medium);">
+            <div>Brief</div>
+            <div>→</div>
+            <div>Research</div>
+            <div>→</div>
+            <div>Concept</div>
+            <div>→</div>
+            <div>AI Exploration</div>
+            <div>→</div>
+            <div>Refinement</div>
+            <div>→</div>
+            <div>Final</div>
+          </div>
+        </div>
+        
+        <div class="grid-3">
+          <div class="card">
+            <div style="text-align: center; margin-bottom: var(--spacing-3);">
+              <div style="width: 120px; height: 120px; background-color: var(--color-bg-subtle); border-radius: var(--radius-sm); margin: 0 auto; display: flex; align-items: center; justify-content: center; color: var(--color-text-light); font-size: 12px; text-align: center;">
+                [AI PROJECT IMAGE]
+              </div>
+            </div>
+            <h3 class="card-title">AI Visual Exploration</h3>
+            <p class="card-body">[Description of AI visual exploration projects]</p>
+          </div>
+          
+          <div class="card">
+            <div style="text-align: center; margin-bottom: var(--spacing-3);">
+              <div style="width: 120px; height: 120px; background-color: var(--color-bg-subtle); border-radius: var(--radius-sm); margin: 0 auto; display: flex; align-items: center; justify-content: center; color: var(--color-text-light); font-size: 12px; text-align: center;">
+                [AI PROJECT IMAGE]
+              </div>
+            </div>
+            <h3 class="card-title">AI Poster Design</h3>
+            <p class="card-body">[Description of AI poster design projects]</p>
+          </div>
+          
+          <div class="card">
+            <div style="text-align: center; margin-bottom: var(--spacing-3);">
+              <div style="width: 120px; height: 120px; background-color: var(--color-bg-subtle); border-radius: var(--radius-sm); margin: 0 auto; display: flex; align-items: center; justify-content: center; color: var(--color-text-light); font-size: 12px; text-align: center;">
+                [AI PROJECT IMAGE]
+              </div>
+            </div>
+            <h3 class="card-title">AI Brand Concept</h3>
+            <p class="card-body">[Description of AI brand concept projects]</p>
+          </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: var(--spacing-10);">
+          <a href="/pages/ai-lab.html" class="btn btn-primary">Explore AI Lab</a>
+        </div>
+      </div>
+    </section>
+    
+    <!-- CTA SECTION -->
+    <section class="section" style="background-color: var(--color-bg-subtle);">
+      <div class="container">
+        <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+          <h2 class="section-title">Let's Work Together</h2>
+          <p class="section-subtitle" style="margin-bottom: var(--spacing-6);">
+            Whether you're looking for a designer to elevate your brand or exploring AI-driven creative solutions, let's connect.
+          </p>
+          <a href="/pages/contact.html" class="btn btn-primary">Get in Touch</a>
+        </div>
+      </div>
+    </section>
+    
+  </main>
+  
+  <!-- ==================== FOOTER ==================== -->
+  <footer>
+    <div class="footer-wrapper">
+      <div class="footer-content">
+        <div>
+          <h3 class="footer-section-title">Navigation</h3>
+          <ul class="footer-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/pages/about.html">About</a></li>
+            <li><a href="/pages/projects.html">Projects</a></li>
+            <li><a href="/pages/ai-lab.html">AI Lab</a></li>
+            <li><a href="/pages/contact.html">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="footer-section-title">Connect</h3>
+          <ul class="footer-links">
+            <li><a href="mailto:your.email@example.com">Email</a></li>
+            <li><a href="#">WeChat</a></li>
+            <li><a href="#">LinkedIn</a></li>
+            <li><a href="#">Instagram</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="footer-section-title">About</h3>
+          <p style="font-size: var(--font-size-body-sm); color: var(--color-text-medium); line-height: var(--line-height-loose);">
+            Brand Visual Designer × AI Creative Designer<br>
+            Crafting beautiful brands and exploring creative possibilities.
+          </p>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2024 Design Portfolio. All rights reserved.</p>
+        <a href="#" class="back-to-top">↑ Back to Top</a>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- JavaScript -->
+  <script src="/src/scripts/main.js"></script>
+  
+</body>
+</html>

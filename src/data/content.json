@@ -1,0 +1,184 @@
+{
+  "config": {
+    "siteName": "Design Portfolio",
+    "siteDescription": "Brand Visual Designer × AI Creative Designer",
+    "author": "Your Name",
+    "email": "your.email@example.com",
+    "wechat": "your_wechat_id",
+    "year": 2024
+  },
+  "projects": [
+    {
+      "id": "project-1",
+      "title": "[PROJECT TITLE]",
+      "slug": "project-1",
+      "category": "Brand Visual Design",
+      "date": "2024-01-15",
+      "thumbnail": "/src/images/projects/project-1-thumb.jpg",
+      "description": "[PROJECT DESCRIPTION - 2-3 SENTENCES]",
+      "heroImage": "/src/images/projects/project-1-hero.jpg",
+      "sections": [
+        {
+          "type": "overview",
+          "title": "Project Overview",
+          "content": "[PROJECT OVERVIEW TEXT - 3-5 SENTENCES]",
+          "images": []
+        },
+        {
+          "type": "background",
+          "title": "Background",
+          "content": "[BACKGROUND AND CONTEXT]",
+          "images": []
+        },
+        {
+          "type": "challenge",
+          "title": "Challenge & Requirements",
+          "content": "[DESCRIBE THE CHALLENGE AND PROJECT REQUIREMENTS]",
+          "images": []
+        },
+        {
+          "type": "strategy",
+          "title": "Strategy",
+          "content": "[EXPLAIN YOUR DESIGN STRATEGY AND APPROACH]",
+          "images": []
+        },
+        {
+          "type": "creative-direction",
+          "title": "Creative Direction",
+          "content": "[DESCRIBE THE CREATIVE DIRECTION AND KEY DESIGN DECISIONS]",
+          "images": []
+        },
+        {
+          "type": "design-process",
+          "title": "Design Process",
+          "content": "[EXPLAIN THE DESIGN PROCESS AND ITERATIONS]",
+          "images": []
+        },
+        {
+          "type": "visual-identity",
+          "title": "Visual Identity",
+          "content": "[DESCRIBE THE VISUAL IDENTITY SYSTEM]",
+          "images": []
+        },
+        {
+          "type": "applications",
+          "title": "Applications",
+          "content": "[DESCRIBE HOW THE DESIGN WAS APPLIED IN DIFFERENT CONTEXTS]",
+          "images": []
+        },
+        {
+          "type": "outcome",
+          "title": "Final Outcome",
+          "content": "[SUMMARIZE THE FINAL OUTCOME AND IMPACT]",
+          "images": []
+        }
+      ],
+      "tags": ["[TAG1]", "[TAG2]", "[TAG3]"],
+      "year": 2024,
+      "featured": true
+    }
+  ],
+  "aiProjects": [
+    {
+      "id": "ai-project-1",
+      "title": "[AI PROJECT TITLE]",
+      "slug": "ai-project-1",
+      "type": "AI Visual Exploration",
+      "description": "[SHORT DESCRIPTION]",
+      "thumbnail": "/src/images/ai-projects/ai-1-thumb.jpg",
+      "images": [
+        "/src/images/ai-projects/ai-1-1.jpg",
+        "/src/images/ai-projects/ai-1-2.jpg"
+      ],
+      "tools": ["Midjourney", "ChatGPT"],
+      "process": [
+        {
+          "step": "Brief",
+          "description": "[DESCRIBE THE BRIEF]"
+        },
+        {
+          "step": "Research",
+          "description": "[DESCRIBE THE RESEARCH]"
+        },
+        {
+          "step": "Concept",
+          "description": "[DESCRIBE THE CONCEPT]"
+        },
+        {
+          "step": "AI Exploration",
+          "description": "[DESCRIBE THE AI EXPLORATION]",
+          "images": []
+        },
+        {
+          "step": "Design Refinement",
+          "description": "[DESCRIBE THE REFINEMENT]",
+          "images": []
+        },
+        {
+          "step": "Final Visual",
+          "description": "[DESCRIBE THE FINAL OUTCOME]",
+          "images": []
+        }
+      ]
+    }
+  ],
+  "about": {
+    "intro": "[PERSONAL INTRODUCTION TEXT - 200-300 WORDS]",
+    "background": "[EDUCATION AND BACKGROUND INFORMATION]",
+    "philosophy": "[YOUR DESIGN PHILOSOPHY AND APPROACH]",
+    "skills": {
+      "branding": [
+        "Logo Design",
+        "Brand Visual Identity",
+        "VI Design",
+        "Poster Design",
+        "Brand Extension",
+        "Store Visual Design"
+      ],
+      "visual": [
+        "Graphic Design",
+        "Hand Drawing",
+        "Oil Painting",
+        "Visual Creative"
+      ],
+      "operations": [
+        "Cross-border E-commerce",
+        "TikTok Content Strategy",
+        "Brand Content Planning",
+        "Commercial Operations"
+      ],
+      "tools": [
+        "Adobe Photoshop",
+        "Adobe Illustrator",
+        "Design Software",
+        "AI Creative Tools"
+      ]
+    },
+    "experience": [
+      {
+        "period": "2020 - Present",
+        "title": "[JOB TITLE]",
+        "company": "[COMPANY NAME]",
+        "description": "[BRIEF DESCRIPTION OF ROLE AND ACHIEVEMENTS]"
+      }
+    ]
+  },
+  "contact": {
+    "intro": "[CONTACT PAGE INTRODUCTION]",
+    "responseTime": "I usually reply within 24-48 hours",
+    "email": "your.email@example.com",
+    "wechat": "your_wechat_id",
+    "social": [
+      {
+        "platform": "LinkedIn",
+        "url": "https://linkedin.com/in/yourprofile",
+        "icon": "linkedin"
+      },
+      {
+        "platform": "Instagram",
+        "url": "https://instagram.com/yourprofile",
+        "icon": "instagram"
+      }
+    ]
+  }
+}
