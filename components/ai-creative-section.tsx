@@ -178,7 +178,7 @@ export function AiCreativeSection({ images }: AiCreativeSectionProps) {
 
   return (
     <section className="content-section ai-section" id="ai" aria-labelledby="ai-title">
-      <div className="section-index"><span>05</span><strong>AI创意</strong><small>AI CREATIVE</small></div>
+      <div className="section-index"><span>04</span><strong>AI创意</strong><small>AI CREATIVE</small></div>
       <header className="ai-heading">
         <span>AI VISUAL ORBIT</span>
         <h2 id="ai-title">视觉轨道</h2>

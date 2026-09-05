@@ -528,7 +528,9 @@ img { display: block; max-width: 100%; }
   .aq-workflow { display: grid; grid-template-columns: 1fr; gap: 0; margin-top: 2.6rem; border-top: 1px solid rgba(241,238,228,.18); }
   .aq-workflow li { padding: .85rem 0; border-bottom: 1px solid rgba(241,238,228,.18); }
   .aq-workflow li:not(:last-child)::after { display: none; }
-  .aq-analysis-grid article { padding: 1rem 0; }
+  .aq-analysis-grid, .aq-analysis-grid > div { min-width: 0; width: 100%; }
+  .aq-analysis-grid article { width: 100%; grid-template-columns: 2.45rem minmax(0,1fr); padding: 1rem 0; }
+  .aq-analysis-grid h3, .aq-analysis-grid p { min-width: 0; width: auto; word-break: normal; overflow-wrap: break-word; writing-mode: horizontal-tb; }
   .aq-final-film { padding-top: 4.2rem; }
   .aq-final-film > p { font-size: 1.2rem; }
 }
@@ -730,11 +732,19 @@ img { display: block; max-width: 100%; }
   .ai-section { padding-left: 0; padding-right: 0; }
   .ai-section > .section-index { left: 1.1rem; }
   .ai-heading { padding: 0 1.1rem; }
-  .ai-orbit-window { width: 100%; height: 27rem; margin-left: 0; }
-  .ai-orbit-group { gap: .8rem; padding-right: .8rem; }
-  .ai-orbit-card { width: 10rem; }
-  .ai-orbit-card.is-featured { width: 10rem; }
-  .ai-orbit-card:hover { transform: translateY(calc(var(--orbit-y) - 1rem)) rotate(0) scale(1.1); }
+  .ai-orbit-window { width: 100%; height: 24.5rem; margin-left: 0; }
+  .ai-orbit-window::after { left: -14%; right: -14%; bottom: .35rem; height: 10rem; }
+  .ai-orbit-track { padding-top: 2.6rem; animation-duration: 29s; }
+  .ai-orbit-group { gap: .65rem; padding-right: .65rem; }
+  .ai-orbit-card, .ai-orbit-card.is-featured { width: 7.7rem; transform: translateY(var(--mobile-orbit-y, var(--orbit-y))) rotate(var(--orbit-rotate)); }
+  .ai-orbit-group .ai-orbit-card:nth-child(1) { --mobile-orbit-y: 3.15rem; }
+  .ai-orbit-group .ai-orbit-card:nth-child(2) { --mobile-orbit-y: 1.15rem; }
+  .ai-orbit-group .ai-orbit-card:nth-child(3) { --mobile-orbit-y: .2rem; }
+  .ai-orbit-group .ai-orbit-card:nth-child(4) { --mobile-orbit-y: 1.75rem; }
+  .ai-orbit-card:hover { transform: translateY(calc(var(--mobile-orbit-y, var(--orbit-y)) - .85rem)) rotate(0) scale(1.08); }
+  .ai-orbit-cover > span { top: .65rem; left: .65rem; right: .65rem; font-size: .34rem; }
+  .ai-orbit-cover > strong { left: .65rem; right: .65rem; bottom: .6rem; font-size: 1.05rem; }
+  .ai-orbit-card.is-featured .ai-orbit-cover > strong, .ai-orbit-card.is-contain-cover .ai-orbit-cover > strong { font-size: 1.3rem; }
   .ai-expanded-image { min-height: 26rem; }
   .ai-expanded-copy { padding: 2.5rem 1.5rem; }
   .ai-expanded-copy h3 { font-size: 3.2rem; }

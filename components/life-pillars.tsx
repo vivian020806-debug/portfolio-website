@@ -157,7 +157,7 @@ export function LifePillars({ images: _images }: LifePillarsProps) {
 
   return (
     <section className="content-section life-section" id="life" aria-labelledby="life-title">
-      <div className="section-index"><span>04</span><strong>我的人生支点</strong><small>MY PILLARS</small></div>
+      <div className="section-index"><span>05</span><strong>我的人生支点</strong><small>MY PILLARS</small></div>
 
       <div className="life-archive">
         <header className="life-heading">

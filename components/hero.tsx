@@ -20,7 +20,7 @@ export function Hero({ fragmentImages }: HeroProps) {
   const aboutRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const sectionIds = ["about", "work", "life", "ai", "contact"] as const;
+    const sectionIds = ["about", "work", "ai", "life", "contact"] as const;
     const observer = new IntersectionObserver(
       (entries) => {
         const visible = entries
@@ -92,8 +92,8 @@ export function Hero({ fragmentImages }: HeroProps) {
         </div>
         <AboutSection />
         <WorkSection images={fragmentImages} />
-        <LifePillars images={fragmentImages} />
         <AiCreativeSection images={fragmentImages} />
+        <LifePillars images={fragmentImages} />
         <ContactSection />
       </div>
     </main>

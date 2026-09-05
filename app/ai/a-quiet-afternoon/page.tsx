@@ -27,7 +27,7 @@ export default function QuietAfternoonPage() {
       <header className="aq-topbar">
         <Link href="/#ai" className="aq-back">← BACK TO AI CREATIVE</Link>
         <nav className="aq-navigation" aria-label="作品集导航">
-          <a href="/#home">HOME</a><a href="/#about">ABOUT</a><a href="/#work">WORK</a><a href="/#life">MY PILLARS</a><a href="/#ai" aria-current="page">AI CREATIVE</a><a href="/#contact">CONTACT</a>
+          <a href="/#home">HOME</a><a href="/#about">ABOUT</a><a href="/#work">WORK</a><a href="/#ai" aria-current="page">AI CREATIVE</a><a href="/#life">MY PILLARS</a><a href="/#contact">CONTACT</a>
         </nav>
       </header>
 
