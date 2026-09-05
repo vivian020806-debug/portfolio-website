@@ -1,4 +1,4 @@
-export type PortfolioSection = "home" | "about" | "work" | "ai" | "contact";
+export type PortfolioSection = "home" | "about" | "work" | "life" | "ai" | "contact";
 
 type ArchiveNavigationProps = {
   active: PortfolioSection;
@@ -8,6 +8,7 @@ const items = [
   { id: "home", label: "首页", english: "HOME" },
   { id: "about", label: "关于我", english: "ABOUT" },
   { id: "work", label: "作品案例", english: "WORK" },
+  { id: "life", label: "我的人生支点", english: "MY PILLARS" },
   { id: "ai", label: "AI创意", english: "AI CREATIVE" },
   { id: "contact", label: "联系我", english: "CONTACT" },
 ] as const;

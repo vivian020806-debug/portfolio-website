@@ -6,6 +6,17 @@ import { useCallback, useEffect, useRef, useState } from "react";
 type LifePillarsProps = { images: string[] };
 type ArchiveWork = { id: string; image: string };
 type GalleryKind = "photography" | "art";
+type SelectedNote = {
+  type: string;
+  title: string;
+  description: string;
+  impressions: string;
+  views: string;
+  ctr?: string;
+  tone: string;
+  cover: string;
+  url?: string;
+};
 type Pillar = {
   id: string;
   number: string;
@@ -31,6 +42,10 @@ const artWorks: ArchiveWork[] = [
   { id: "04", image: "/images/pillars/art/1 (4).jpg" },
   { id: "05", image: "/images/pillars/art/1 (5).jpg" },
   { id: "06", image: "/images/pillars/art/1 (6).jpg" },
+  { id: "07", image: "/images/pillars/art/07-sailboats.jpg" },
+  { id: "08", image: "/images/pillars/art/08-house.jpg" },
+  { id: "09", image: "/images/pillars/art/09-figure-and-cat.jpg" },
+  { id: "10", image: "/images/pillars/art/10-street.jpg" },
 ];
 
 const contentMetrics = [
@@ -39,10 +54,10 @@ const contentMetrics = [
   { value: "16%+", label: "TOP CTR", detail: "最高封面点击率" },
 ];
 
-const selectedNotes = [
-  { type: "DESIGN", title: "点线面的极简海报 / Day15", description: "用最少的视觉元素，建立画面的节奏、秩序与张力。", impressions: "81,112", views: "4,556", tone: "day15", cover: "/images/content/day15-cover.png" },
-  { type: "AI / CODEX", title: "想用 ChatGPT 的 Codex？我终于把坑踩完了", description: "把复杂的配置和使用过程，整理成新手也能快速理解的上手路径。", impressions: "39,074", views: "5,878", ctr: "12.8%", tone: "codex", cover: "/images/content/codex-cover.png" },
-  { type: "CREATIVE NOTE", title: "十二秒的事情，其实只需要两千六百个字", description: "用两千六百个字，记录一段关于十二秒的思考。", impressions: "26,684", views: "4,518", ctr: "16.5%", tone: "twelve-seconds", cover: "/images/content/twelve-seconds-cover.png" },
+const selectedNotes: SelectedNote[] = [
+  { type: "DESIGN", title: "点线面的极简海报 / Day15", description: "用最少的视觉元素，建立画面的节奏、秩序与张力。", impressions: "81,112", views: "4,556", tone: "day15", cover: "/images/content/day15-cover.png", url: "https://www.xiaohongshu.com/discovery/item/69d7723a0000000022024992?source=webshare&xhsshare=pc_web&xsec_token=ABCY_zDxfmWO6CW8FevTpCNKWETPN2XKbvuYeIekXkHi0=&xsec_source=pc_share" },
+  { type: "AI / CODEX", title: "想用 ChatGPT 的 Codex？我终于把坑踩完了", description: "把复杂的配置和使用过程，整理成新手也能快速理解的上手路径。", impressions: "39,074", views: "5,878", ctr: "12.8%", tone: "codex", cover: "/images/content/codex-cover.png", url: "https://www.xiaohongshu.com/discovery/item/6a80236f000000003300d29e?source=webshare&xhsshare=pc_web&xsec_token=ABOLenE7XMu1k97grsjV205MyCK9pBEWw5NFgMoJXQuvM=&xsec_source=pc_share" },
+  { type: "CREATIVE NOTE", title: "十二秒的事情，其实只需要两千六百个字", description: "用两千六百个字，记录一段关于十二秒的思考。", impressions: "26,684", views: "4,518", ctr: "16.5%", tone: "twelve-seconds", cover: "/images/content/twelve-seconds-cover.png", url: "https://www.xiaohongshu.com/discovery/item/6a84476b0000000033034c86?source=webshare&xhsshare=pc_web&xsec_token=ABa4nf3H1yf1aauSAd38ffSCdtWMfFzS9xSqOafviO-20=&xsec_source=pc_share" },
 ];
 
 const pillars: Pillar[] = [
@@ -50,14 +65,6 @@ const pillars: Pillar[] = [
   { id: "literature", number: "02", english: "LITERATURE", chinese: "文学", description: "文字让我理解那些无法被画面完全表达的部分。", works: [], accent: "number" },
   { id: "art", number: "03", english: "ART", chinese: "艺术", description: "艺术让我持续保有审美感受力，也让我不断回到表达本身。", works: artWorks, accent: "underline" },
   { id: "content-creation", number: "04", english: "CONTENT CREATION", chinese: "内容创作", description: "我用创作整理自己的想法，也让表达连接更多可能。", works: [], accent: "explore" },
-];
-
-const stackPositions = [
-  { left: "1%", top: "18%", rotate: "-7deg", hoverX: "-1.1rem", hoverY: ".8rem", hoverRotate: "-9deg" },
-  { left: "18%", top: "7%", rotate: "-3deg", hoverX: "-.65rem", hoverY: "-.4rem", hoverRotate: "-4deg" },
-  { left: "36%", top: "14%", rotate: "2deg", hoverX: "0", hoverY: ".15rem", hoverRotate: "1deg" },
-  { left: "53%", top: "4%", rotate: "4deg", hoverX: ".65rem", hoverY: "-.55rem", hoverRotate: "5deg" },
-  { left: "69%", top: "17%", rotate: "8deg", hoverX: "1.1rem", hoverY: ".65rem", hoverRotate: "10deg" },
 ];
 
 export function LifePillars({ images: _images }: LifePillarsProps) {
@@ -150,7 +157,7 @@ export function LifePillars({ images: _images }: LifePillarsProps) {
 
   return (
     <section className="content-section life-section" id="life" aria-labelledby="life-title">
-      <div className="section-index"><span>—</span><strong>我的人生支点</strong><small>MY LIFE PILLARS</small></div>
+      <div className="section-index"><span>04</span><strong>我的人生支点</strong><small>MY PILLARS</small></div>
 
       <div className="life-archive">
         <header className="life-heading">
@@ -181,7 +188,23 @@ export function LifePillars({ images: _images }: LifePillarsProps) {
               <div className="selected-notes-grid">
                 {selectedNotes.map((note, index) => (
                   <article className={`selected-note selected-note-${index + 1}`} key={note.title}>
-                    <div className={`selected-note-cover is-${note.tone}${note.cover ? " has-image" : ""}`}>{note.cover && <img src={note.cover} alt={`${note.title}封面`} />}<span>{note.type}</span><b>{String(index + 1).padStart(2, "0")}</b><strong>{note.title}</strong><small>VIEW NOTE →</small></div>
+                    {note.url ? (
+                      <a className={`selected-note-cover is-${note.tone}${note.cover ? " has-image" : ""} is-link-ready`} href={note.url} target="_blank" rel="noopener noreferrer" aria-label={`在新标签页打开：${note.title}`}>
+                        <img src={note.cover} alt={`${note.title}封面`} />
+                        <span>{note.type}</span>
+                        <b>{String(index + 1).padStart(2, "0")}</b>
+                        <strong>{note.title}</strong>
+                        <small>VIEW NOTE →</small>
+                      </a>
+                    ) : (
+                      <div className={`selected-note-cover is-${note.tone}${note.cover ? " has-image" : ""} is-link-pending`} aria-label={`${note.title}：需要补充真实小红书笔记链接`} title="需要补充真实小红书笔记链接">
+                        <img src={note.cover} alt={`${note.title}封面`} />
+                        <span>{note.type}</span>
+                        <b>{String(index + 1).padStart(2, "0")}</b>
+                        <strong>{note.title}</strong>
+                        <small>NOTE LINK NEEDED</small>
+                      </div>
+                    )}
                     {note.description && <p className="selected-note-description">{note.description}</p>}
                     <div className="selected-note-data"><span>{note.impressions}<small>曝光</small></span><span>{note.views}<small>观看量</small></span>{note.ctr && <span>{note.ctr}<small>封面点击率</small></span>}</div>
                   </article>
@@ -199,17 +222,10 @@ export function LifePillars({ images: _images }: LifePillarsProps) {
               <p>「{photography.description}」</p>
               <small>OPEN ARCHIVE ↗</small>
             </button>
-            <div className="photography-stack" aria-label="摄影作品预览">
-              {!galleryOpen && photographyWorks.map((work, index) => {
-                const position = stackPositions[index];
-                return <motion.button className="photo-stack-card" type="button" key={work.id} onClick={() => openGallery("photography")} aria-label={`打开摄影作品集，从作品 ${work.id} 开始浏览`} style={{ "--photo-left": position.left, "--photo-top": position.top, "--photo-rotate": position.rotate, "--photo-hover-x": position.hoverX, "--photo-hover-y": position.hoverY, "--photo-hover-rotate": position.hoverRotate, "--photo-index": index } as React.CSSProperties}><img src={work.image} alt={`摄影作品合集 ${work.id}`} draggable={false} /><span aria-hidden="true">{work.id}</span></motion.button>;
-              })}
-            </div>
           </article>
 
           <article className="pillar-entry pillar-art">
             <button className="pillar-art-copy" type="button" onClick={() => openGallery("art")} aria-label="打开艺术作品集"><span className="pillar-number">{art.number}</span><div><h3>{art.english}</h3><strong>{art.chinese}</strong><p>「{art.description}」</p><small>OPEN GALLERY ↗</small></div></button>
-            <div className="art-stack" aria-label="艺术作品预览">{artWorks.slice(2, 3).map((work, index) => <button className="art-stack-card" type="button" key={work.id} onClick={() => openGallery("art")} aria-label={`打开艺术作品集，从作品 ${work.id} 开始浏览`} style={{ "--art-index": index } as React.CSSProperties}><img src={work.image} alt={`艺术作品 ${work.id}`} draggable={false} /></button>)}</div>
           </article>
 
           <article className="pillar-entry pillar-text-node pillar-literature"><span className="pillar-number">04</span><div><h3>LITERATURE</h3><strong>文学</strong><p>「文字让我理解那些无法被画面完全表达的部分。」</p></div></article>

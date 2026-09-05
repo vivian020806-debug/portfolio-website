@@ -1,7 +1,7 @@
 export function ContactSection() {
   return (
     <section className="content-section contact-section" id="contact" aria-labelledby="contact-title">
-      <div className="section-index"><span>05</span><strong>联系我</strong><small>CONTACT</small></div>
+      <div className="section-index"><span>06</span><strong>联系我</strong><small>CONTACT</small></div>
       <article className="contact-paper">
         <span className="contact-eyebrow">LET&apos;S CREATE SOMETHING TOGETHER.</span>
         <div className="contact-intro">

@@ -20,15 +20,14 @@ export function Hero({ fragmentImages }: HeroProps) {
   const aboutRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const sectionIds = ["about", "life", "work", "ai", "contact"] as const;
+    const sectionIds = ["about", "work", "life", "ai", "contact"] as const;
     const observer = new IntersectionObserver(
       (entries) => {
         const visible = entries
           .filter((entry) => entry.isIntersecting)
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
         if (visible) {
-          const nextSection = visible.target.id === "life" ? "about" : visible.target.id;
-          setActiveSection(nextSection as PortfolioSection);
+          setActiveSection(visible.target.id as PortfolioSection);
         }
       },
       { rootMargin: "-22% 0px -58% 0px", threshold: [0, 0.15, 0.35, 0.6] },
@@ -84,7 +83,7 @@ export function Hero({ fragmentImages }: HeroProps) {
           <span>SCROLL TO OPEN</span>
           <i aria-hidden="true">↓</i>
         </button>
-        <span className="cover-folio" aria-hidden="true">01 / 05</span>
+        <span className="cover-folio" aria-hidden="true">01 / 06</span>
       </section>
 
       <div className="portfolio-pages" ref={aboutRef}>
@@ -92,8 +91,8 @@ export function Hero({ fragmentImages }: HeroProps) {
           <ArchiveNavigation active={activeSection} />
         </div>
         <AboutSection />
-        <LifePillars images={fragmentImages} />
         <WorkSection images={fragmentImages} />
+        <LifePillars images={fragmentImages} />
         <AiCreativeSection images={fragmentImages} />
         <ContactSection />
       </div>

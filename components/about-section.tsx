@@ -112,6 +112,23 @@ function ToolMark({ id, label, short }: { id: string; label: string; short: stri
   );
 }
 
+function CapabilityIndex({ className = "", headingId = "capability-heading" }: { className?: string; headingId?: string }) {
+  return (
+    <section className={`about-capability-index ${className}`.trim()} aria-labelledby={headingId}>
+      <div className="about-mini-heading">
+        <span>03</span>
+        <h3 id={headingId}>TOOLS / CAPABILITIES</h3>
+      </div>
+      <ul className="about-tools" aria-label="常用设计软件">
+        {tools.map((tool) => <ToolMark key={tool.id} {...tool} />)}
+      </ul>
+      <ul className="about-capabilities">
+        {capabilities.map((capability) => <li key={capability}>{capability}</li>)}
+      </ul>
+    </section>
+  );
+}
+
 export function AboutSection() {
   const [detailsOpen, setDetailsOpen] = useState(false);
 
@@ -134,18 +151,7 @@ export function AboutSection() {
           <p className="about-role">品牌设计师 / AIGC 视觉设计师</p>
           <p className="profile-note">Keep exploring.</p>
 
-          <section className="about-capability-index" aria-labelledby="capability-heading">
-            <div className="about-mini-heading">
-              <span>03</span>
-              <h3 id="capability-heading">TOOLS / CAPABILITIES</h3>
-            </div>
-            <ul className="about-tools" aria-label="常用设计软件">
-              {tools.map((tool) => <ToolMark key={tool.id} {...tool} />)}
-            </ul>
-            <ul className="about-capabilities">
-              {capabilities.map((capability) => <li key={capability}>{capability}</li>)}
-            </ul>
-          </section>
+          <CapabilityIndex className="about-capability-index-desktop" />
         </aside>
 
         <div className="about-information">
@@ -215,6 +221,8 @@ export function AboutSection() {
             </div>
           </section>
         </div>
+
+        <CapabilityIndex className="about-capability-index-mobile" headingId="capability-heading-mobile" />
       </article>
     </section>
   );
