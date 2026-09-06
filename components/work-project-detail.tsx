@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { useRef, useState } from "react";
 import type { WorkProject } from "@/data/work-projects";
 
 type WorkProjectDetailProps = {
@@ -7,21 +8,56 @@ type WorkProjectDetailProps = {
 };
 
 export function WorkProjectDetail({ project, onClose }: WorkProjectDetailProps) {
+  const [playingVideo, setPlayingVideo] = useState<string | null>(null);
+  const videoRefs = useRef<Record<string, HTMLVideoElement | null>>({});
+
   const renderAsset = (asset: WorkProject["images"][number], imageIndex: number) => (
     <figure
-      className={`work-project-asset ${asset.width / asset.height < .95 ? "is-portrait" : "is-landscape"}`}
+      className={`work-project-asset ${asset.kind === "video" ? "is-video" : asset.width / asset.height < .95 ? "is-portrait" : "is-landscape"}`}
       key={asset.src}
       style={{ "--asset-native-width": `${asset.width}px` } as React.CSSProperties}
     >
-      <img
-        src={asset.src}
-        alt={`${project.title}项目展示 ${imageIndex + 1}`}
-        width={asset.width}
-        height={asset.height}
-        loading={imageIndex < 2 ? "eager" : "lazy"}
-        decoding="async"
-      />
-      <figcaption>{project.index}.{String(imageIndex + 1).padStart(2, "0")}</figcaption>
+      {asset.kind === "video" ? (
+        <div className="work-project-video-frame">
+          <video
+            ref={(element) => { videoRefs.current[asset.src] = element; }}
+            src={asset.src}
+            width={asset.width}
+            height={asset.height}
+            preload="metadata"
+            playsInline
+            muted
+            controls={playingVideo === asset.src}
+            onPlay={() => setPlayingVideo(asset.src)}
+            onEnded={() => setPlayingVideo(null)}
+          />
+          {playingVideo !== asset.src && (
+            <button
+              type="button"
+              className="work-project-video-play"
+              onClick={() => {
+                const video = videoRefs.current[asset.src];
+                if (!video) return;
+                video.play();
+                setPlayingVideo(asset.src);
+              }}
+              aria-label={`播放 ${asset.label ?? `视频 ${imageIndex + 1}`}`}
+            >
+              <span>▶</span> PLAY
+            </button>
+          )}
+        </div>
+      ) : (
+        <img
+          src={asset.src}
+          alt={`${project.title}项目展示 ${imageIndex + 1}`}
+          width={asset.width}
+          height={asset.height}
+          loading={imageIndex < 2 ? "eager" : "lazy"}
+          decoding="async"
+        />
+      )}
+      <figcaption>{asset.label ?? `${project.index}.${String(imageIndex + 1).padStart(2, "0")}`}</figcaption>
     </figure>
   );
 
@@ -61,14 +97,26 @@ export function WorkProjectDetail({ project, onClose }: WorkProjectDetailProps) 
             <div className="work-project-case-sections">
               {project.sections.map((section) => (
                 <section className={`work-project-case-section is-${section.layout}`} key={section.number}>
+                  {section.heroFirst && <div className="work-project-case-assets">{section.imageIndexes.map((imageIndex) => renderAsset(project.images[imageIndex], imageIndex))}</div>}
                   <header>
                     <span>{section.number}</span>
                     <div><h4>{section.title}</h4><p>{section.chineseTitle}</p></div>
                     <small>{section.description}</small>
                   </header>
-                  <div className="work-project-case-assets">
-                    {section.imageIndexes.map((imageIndex) => renderAsset(project.images[imageIndex], imageIndex))}
-                  </div>
+                  {section.metadata && (
+                    <dl className="work-project-section-meta">
+                      {section.metadata.map((item) => <div key={item.label}><dt>{item.label}</dt><dd>{item.value}</dd></div>)}
+                    </dl>
+                  )}
+                  {!section.heroFirst && section.imageIndexes.length > 0 && <div className="work-project-case-assets">{section.imageIndexes.map((imageIndex) => renderAsset(project.images[imageIndex], imageIndex))}</div>}
+                  {section.closing && (
+                    <footer className="work-project-closing">
+                      <span>{section.closing.label}</span>
+                      <h5>{section.closing.title}</h5>
+                      <p>{section.closing.body}</p>
+                      <button type="button" onClick={onClose}>NEXT PROJECT <b>← BACK TO WORK</b></button>
+                    </footer>
+                  )}
                 </section>
               ))}
             </div>
