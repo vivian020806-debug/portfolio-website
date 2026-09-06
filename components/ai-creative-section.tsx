@@ -37,11 +37,6 @@ type AiProject = {
   }>;
 };
 
-const orbitBlueprint = [
-  { imageIndex: 6, y: 4, rotate: 2 },
-  { imageIndex: 18, y: 18, rotate: 5 },
-];
-
 const processSteps = [
   "CONCEPT",
   "PROMPT / PROCESS",
@@ -146,18 +141,8 @@ export function AiCreativeSection({ images }: AiCreativeSectionProps) {
         coverContain: true,
         href: "/ai/a-quiet-afternoon",
       },
-      ...orbitBlueprint
-        .map((item, index) => ({
-        ...item,
-        id: `ai-${index + 1}`,
-        title: "敬请期待",
-        coverLabel: "AI CREATIVE / COMING SOON",
-        coverTitle: "敬请期待",
-        image: images[item.imageIndex],
-      }))
-        .filter((item): item is AiItem => Boolean(item.image)),
     ],
-    [images],
+    [],
   );
   const selectedProject = selected?.project;
 
