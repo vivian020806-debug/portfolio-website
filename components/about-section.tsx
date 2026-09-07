@@ -189,7 +189,10 @@ export function AboutSection() {
                 aria-controls="work-experience-details"
                 onClick={() => setDetailsOpen((open) => !open)}
               >
-                <span>{detailsOpen ? "CLOSE DETAILS" : "VIEW DETAILS"}</span>
+                <span className="experience-toggle-copy">
+                  <strong>{detailsOpen ? "CLOSE DETAILS" : "VIEW DETAILS"}</strong>
+                  <small>{detailsOpen ? "收起详细经历" : "打开看详情"}</small>
+                </span>
                 <b aria-hidden="true">{detailsOpen ? "−" : "＋"}</b>
               </button>
             </header>
