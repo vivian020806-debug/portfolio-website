@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { WorkProjectDetail } from "@/components/work-project-detail";
 import { workProjects, type WorkProject } from "@/data/work-projects";
 
@@ -11,6 +11,18 @@ type WorkSectionProps = {
 
 export function WorkSection({ images: _images }: WorkSectionProps) {
   const [selected, setSelected] = useState<WorkProject | null>(null);
+  const [showSwipeCue, setShowSwipeCue] = useState(false);
+  const stageRef = useRef<HTMLDivElement>(null);
+  const orderedProjects = useMemo(() => {
+    const priority = ["xuchuan-night", "live-music-visual", "graphic-design", "xuchuan-future-brand"];
+    return [...workProjects]
+      .sort((left, right) => {
+        const leftPriority = priority.indexOf(left.id);
+        const rightPriority = priority.indexOf(right.id);
+        return (leftPriority === -1 ? priority.length : leftPriority) - (rightPriority === -1 ? priority.length : rightPriority);
+      })
+      .map((project, index) => ({ ...project, index: String(index + 1).padStart(2, "0") }));
+  }, []);
 
   useEffect(() => {
     const closeOnEscape = (event: KeyboardEvent) => {
@@ -27,6 +39,21 @@ export function WorkSection({ images: _images }: WorkSectionProps) {
     return () => { document.body.style.overflow = previousOverflow; };
   }, [selected]);
 
+  useEffect(() => {
+    const stage = stageRef.current;
+    if (!stage) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        setShowSwipeCue(true);
+        observer.disconnect();
+      },
+      { threshold: 0.35 },
+    );
+    observer.observe(stage);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section className="content-section work-section" id="work" aria-labelledby="work-title">
       <div className="section-index section-index-light"><span>03</span><strong>作品案例</strong><small>WORK</small></div>
@@ -36,9 +63,9 @@ export function WorkSection({ images: _images }: WorkSectionProps) {
         <p>作品案例 / 把每个项目，装订成一本可以被打开的设计书。</p>
       </header>
 
-      <div className="work-stage">
-        <div className="work-library">
-          {workProjects.map((project, index) => (
+      <div className="work-stage" ref={stageRef}>
+        <div className={`work-library${showSwipeCue ? " is-swipe-cued" : ""}`}>
+          {orderedProjects.map((project, index) => (
             <motion.button
               className={`work-book work-book-real work-book-${project.id} is-cover-${project.coverMode}${project.coverTone ? ` is-cover-${project.coverTone}` : ""}`}
               type="button"
@@ -65,6 +92,8 @@ export function WorkSection({ images: _images }: WorkSectionProps) {
             </motion.button>
           ))}
         </div>
+        <span className="work-swipe-edge" aria-hidden="true">→</span>
+        <p className="work-swipe-hint"><span>DRAG →</span>向右滑动，查看更多项目 →</p>
         <p className="work-instruction">点击任一本项目册，查看详情 ↑</p>
       </div>
 

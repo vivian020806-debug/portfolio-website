@@ -194,8 +194,8 @@ export const workProjects: WorkProject[] = [
   {
     id: "xuchuan-future-brand",
     index: "07",
-    title: "绪川未来品牌手册",
-    englishTitle: "XUCHUAN BRAND FUTURE",
+    title: "绪川品牌手册",
+    englishTitle: "XUCHUAN BRAND MANUAL",
     category: "品牌视觉 / Brand Visual",
     year: "2025.08",
     discipline: "Brand Strategy / Experience / Visual Direction",
