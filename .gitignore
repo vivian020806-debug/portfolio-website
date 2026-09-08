@@ -6,5 +6,6 @@ out
 logs/
 *.tsbuildinfo
 coverage/
+source-assets/originals/
 .env*
 !.env.example

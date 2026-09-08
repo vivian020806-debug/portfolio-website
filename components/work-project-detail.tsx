@@ -53,7 +53,7 @@ export function WorkProjectDetail({ project, onClose }: WorkProjectDetailProps) 
           alt={`${project.title}项目展示 ${imageIndex + 1}`}
           width={asset.width}
           height={asset.height}
-          loading={imageIndex < 2 ? "eager" : "lazy"}
+          loading={imageIndex === 0 ? "eager" : "lazy"}
           decoding="async"
         />
       )}

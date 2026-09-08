@@ -191,7 +191,7 @@ export function AiCreativeSection({ images }: AiCreativeSectionProps) {
                     tabIndex={copy === 1 ? -1 : 0}
                   >
                     <div className="ai-orbit-cover">
-                      <img src={item.image} alt={copy === 0 ? item.title : ""} draggable={false} />
+                      <img src={item.image} alt={copy === 0 ? item.title : ""} draggable={false} loading="lazy" decoding="async" />
                       <span>{item.coverLabel}</span>
                       <strong>{item.coverTitle}</strong>
                     </div>
@@ -227,7 +227,7 @@ export function AiCreativeSection({ images }: AiCreativeSectionProps) {
                   <p>{selectedProject.subtitle}</p>
                 </header>
                 <div className="ai-project-hero">
-                  <img src={selectedProject.cover} alt={`${selectedProject.title} 项目封面`} />
+                  <img src={selectedProject.cover} alt={`${selectedProject.title} 项目封面`} loading="eager" decoding="async" />
                 </div>
                 <section className="ai-project-introduction" aria-label="项目简介">
                   <span>PROJECT NOTE / 2026</span>
@@ -252,7 +252,7 @@ export function AiCreativeSection({ images }: AiCreativeSectionProps) {
                   <div>
                     {selectedProject.images.map((image, index) => (
                       <figure key={image}>
-                        <img src={image} alt={`${selectedProject.title} 海报 ${String(index + 1).padStart(2, "0")}`} loading={index < 2 ? "eager" : "lazy"} />
+                        <img src={image} alt={`${selectedProject.title} 海报 ${String(index + 1).padStart(2, "0")}`} loading={index === 0 ? "eager" : "lazy"} decoding="async" />
                         <figcaption>{String(index + 1).padStart(2, "0")} / DAILY NOTE</figcaption>
                       </figure>
                     ))}

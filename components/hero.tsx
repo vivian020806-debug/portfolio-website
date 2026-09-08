@@ -106,7 +106,7 @@ function CoverCollage({ images, side }: { images: string[]; side: "left" | "righ
       {images.map((image, index) => (
         <figure className={`cover-scrap cover-scrap-${index + 1}`} key={image}>
           <span className="cover-tape" />
-          <img src={image} alt="" draggable={false} />
+          <img src={image} alt="" draggable={false} loading="eager" decoding="async" fetchPriority={index === 0 ? "high" : "auto"} />
         </figure>
       ))}
       <span className="collage-pencil-mark" />

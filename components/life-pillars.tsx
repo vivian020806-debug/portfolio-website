@@ -176,7 +176,7 @@ export function LifePillars({ images: _images }: LifePillarsProps) {
               <a href="https://www.xiaohongshu.com/user/profile/663ce17e00000000070069fa" target="_blank" rel="noopener noreferrer">搞设计的阿鱼｜AI版 <i>↗</i></a>
             </header>
             <div className="content-creation-summary">
-              <div className="content-creator-visual has-profile-image" aria-label="搞设计的阿鱼｜AI版账号视觉"><img src="/images/content/ayu-profile.png" alt="搞设计的阿鱼｜AI版小红书账号介绍" /></div>
+              <div className="content-creator-visual has-profile-image" aria-label="搞设计的阿鱼｜AI版账号视觉"><img src="/images/content/ayu-profile.png" alt="搞设计的阿鱼｜AI版小红书账号介绍" loading="lazy" decoding="async" /></div>
               <dl className="content-metrics">{contentMetrics.map((metric) => <div key={metric.label}><dt>{metric.value}</dt><dd>{metric.label}</dd><small>{metric.detail}</small></div>)}</dl>
             </div>
             <div className="content-creation-actions">
@@ -190,7 +190,7 @@ export function LifePillars({ images: _images }: LifePillarsProps) {
                   <article className={`selected-note selected-note-${index + 1}`} key={note.title}>
                     {note.url ? (
                       <a className={`selected-note-cover is-${note.tone}${note.cover ? " has-image" : ""} is-link-ready`} href={note.url} target="_blank" rel="noopener noreferrer" aria-label={`在新标签页打开：${note.title}`}>
-                        <img src={note.cover} alt={`${note.title}封面`} />
+                        <img src={note.cover} alt={`${note.title}封面`} loading="lazy" decoding="async" />
                         <span>{note.type}</span>
                         <b>{String(index + 1).padStart(2, "0")}</b>
                         <strong>{note.title}</strong>
@@ -198,7 +198,7 @@ export function LifePillars({ images: _images }: LifePillarsProps) {
                       </a>
                     ) : (
                       <div className={`selected-note-cover is-${note.tone}${note.cover ? " has-image" : ""} is-link-pending`} aria-label={`${note.title}：需要补充真实小红书笔记链接`} title="需要补充真实小红书笔记链接">
-                        <img src={note.cover} alt={`${note.title}封面`} />
+                        <img src={note.cover} alt={`${note.title}封面`} loading="lazy" decoding="async" />
                         <span>{note.type}</span>
                         <b>{String(index + 1).padStart(2, "0")}</b>
                         <strong>{note.title}</strong>
@@ -269,7 +269,7 @@ export function LifePillars({ images: _images }: LifePillarsProps) {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: .5, delay: .08 + index * .045, ease: [0.22, 0.7, 0.2, 1] }}
                   >
-                    <img src={work.image} alt={`${activeGallery === "art" ? "艺术作品" : "摄影作品合集"} ${work.id}`} draggable={false} />
+                    <img src={work.image} alt={`${activeGallery === "art" ? "艺术作品" : "摄影作品合集"} ${work.id}`} draggable={false} loading="lazy" decoding="async" />
                     <span><b>{work.id}</b><small>VIEW →</small></span>
                   </motion.button>
                 ))}
@@ -298,7 +298,7 @@ export function LifePillars({ images: _images }: LifePillarsProps) {
                   </div>
                   <button className="photography-lightbox-arrow is-previous" type="button" onClick={showPrevious} aria-label="上一张作品">←</button>
                   <motion.figure key={selectedWork.id} initial={{ opacity: 0, y: 14, scale: .985 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ duration: .36, ease: [0.22, 0.7, 0.2, 1] }}>
-                    <img src={selectedWork.image} alt={`${activeGallery === "art" ? "艺术作品" : "摄影作品合集"} ${selectedWork.id}`} />
+                    <img src={selectedWork.image} alt={`${activeGallery === "art" ? "艺术作品" : "摄影作品合集"} ${selectedWork.id}`} loading="eager" decoding="async" />
                     <figcaption>{activeGallery === "art" ? "ART" : "PHOTOGRAPHY"} / {selectedWork.id}</figcaption>
                   </motion.figure>
                   <button className="photography-lightbox-arrow is-next" type="button" onClick={showNext} aria-label="下一张作品">→</button>

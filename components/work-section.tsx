@@ -80,7 +80,7 @@ export function WorkSection({ images: _images }: WorkSectionProps) {
             >
               <span className="book-spine">PROJECT / {project.index}</span>
               <span className="work-book-media">
-                <img src={project.cover} alt={`${project.title}项目封面`} draggable={false} loading="lazy" />
+                <img src={project.cover} alt={`${project.title}项目封面`} draggable={false} width="1000" height="1400" loading="lazy" decoding="async" />
               </span>
               <span className="book-cover-copy">
                 <small>{project.discipline ?? project.category}</small>
