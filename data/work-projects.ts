@@ -69,7 +69,7 @@ export const workProjects: WorkProject[] = [
     index: "02",
     title: "沿途",
     englishTitle: "YAN TU",
-    category: "落地项目",
+    category: "品牌概念项目",
     year: "2026",
     cover: "/projects/yan-tu/1.png",
     coverMode: "contain",
