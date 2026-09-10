@@ -14,7 +14,7 @@ export function WorkSection({ images: _images }: WorkSectionProps) {
   const [showSwipeCue, setShowSwipeCue] = useState(false);
   const stageRef = useRef<HTMLDivElement>(null);
   const orderedProjects = useMemo(() => {
-    const priority = ["xuchuan-night", "live-music-visual", "graphic-design", "xuchuan-future-brand"];
+    const priority = ["xuchuan-night", "live-music-visual", "xuchuan-future-brand"];
     return [...workProjects]
       .sort((left, right) => {
         const leftPriority = priority.indexOf(left.id);
