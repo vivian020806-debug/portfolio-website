@@ -532,6 +532,21 @@ img { display: block; max-width: 100%; }
 .aq-final-film > p { width: min(100%,31rem); margin: 1.8rem auto 0; color: rgba(241,238,228,.63); font-family: "Cormorant Garamond",serif; font-size: 1.4rem; text-align: center; }
 .aq-original-link { display: block; width: max-content; margin: 2.2rem auto 0; padding-bottom: .45rem; border-bottom: 1px solid var(--red); color: var(--red); }
 
+/* AI PRODUCT VIDEO — a compact case where the film leads and the process image carries the method. */
+.apv-page .aq-hero { padding-bottom: clamp(4.5rem,8vw,7rem); }
+.apv-page .aq-chinese-title { width: min(53%,25rem); line-height: 1.6; overflow-wrap: anywhere; }
+.apv-hero-video { width: min(100%,25rem); }
+.apv-film-section .aq-video-frame { width: min(100%,44rem); margin: 0 auto; }
+.apv-film-intro, .apv-process-note { display: flex; justify-content: space-between; align-items: baseline; gap: 2rem; width: min(100%,44rem); margin: 0 auto 2.2rem; border-bottom: 1px solid rgba(241,238,228,.18); padding-bottom: 1rem; }
+.apv-film-intro p, .apv-process-note p { max-width: 31rem; margin: 0; color: rgba(241,238,228,.76); font-family: "Cormorant Garamond","Noto Sans SC",serif; font-size: clamp(1.25rem,2.25vw,1.9rem); line-height: 1.5; }
+.apv-film-intro span, .apv-process-note span { color: var(--red); font-size: .52rem; letter-spacing: .15em; text-align: right; }
+.apv-process-image { width: min(100%,43rem); margin: 0 auto; }
+.apv-process-image img { display: block; width: 100%; height: auto; background: #ded4c3; }
+.apv-process-image figcaption { margin-top: .8rem; color: rgba(241,238,228,.42); font-size: .48rem; letter-spacing: .15em; text-align: right; }
+.apv-closing { padding-bottom: 0; text-align: center; }
+.apv-closing > p { margin: 0; color: var(--paper); font-family: "Cormorant Garamond",serif; font-size: clamp(3.3rem,7vw,7.4rem); font-weight: 500; line-height: .76; letter-spacing: -.075em; }
+.apv-closing > span { display: block; max-width: 23rem; margin: 1.6rem auto 0; color: rgba(241,238,228,.58); font-size: .7rem; line-height: 1.8; }
+
 @media (max-width: 760px) {
   .aq-page { padding-bottom: 5rem; overflow: hidden; }
   .aq-container { width: min(100% - 2.2rem,74rem); }
@@ -570,6 +585,14 @@ img { display: block; max-width: 100%; }
   .aq-analysis-grid h3, .aq-analysis-grid p { min-width: 0; width: auto; word-break: normal; overflow-wrap: break-word; writing-mode: horizontal-tb; }
   .aq-final-film { padding-top: 4.2rem; }
   .aq-final-film > p { font-size: 1.2rem; }
+  .apv-hero-video { width: min(100%,21rem); }
+  .apv-page .aq-chinese-title { width: 75%; margin-left: 25%; }
+  .apv-page .aq-hero-note > p { overflow-wrap: anywhere; }
+  .apv-film-intro, .apv-process-note { display: block; width: 100%; margin-bottom: 1.6rem; }
+  .apv-film-intro p, .apv-process-note p { font-size: 1.35rem; }
+  .apv-film-intro span, .apv-process-note span { display: block; margin-top: 1rem; text-align: left; font-size: .46rem; }
+  .apv-process-image { width: 100%; }
+  .apv-closing > p { font-size: clamp(3.2rem,16vw,4.6rem); }
 }
 
 /* CONTACT */

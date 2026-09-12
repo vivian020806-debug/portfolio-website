@@ -141,6 +141,17 @@ export function AiCreativeSection({ images }: AiCreativeSectionProps) {
         coverContain: true,
         href: "/ai/a-quiet-afternoon",
       },
+      {
+        id: "ai-product-video",
+        title: "AI 产品创意视频",
+        coverLabel: "AI PRODUCT VIDEO / CREATIVE PROCESS",
+        coverTitle: "AI 产品\n创意视频",
+        image: "/projects/ai-product-video/cover.jpg",
+        imageIndex: -3,
+        y: 30,
+        rotate: 3,
+        href: "/ai/product-video",
+      },
     ],
     [],
   );
